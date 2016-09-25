@@ -1,0 +1,55 @@
+# # # # # # # #
+#   K i k o   #
+# # # # # # # #
+
+# Basic
+name:               "Tiancheng"
+description:        ""
+
+# jekyll-seo-tag, see: http://www.rubydoc.info/gems/jekyll-seo-tag/1.2.0
+url:                "//ilikeeatingrice.github.io"
+author:             "Tiancheng"
+twitter:
+  username:         ""
+#facebook:
+#  app_id:           1234
+#    publisher:      1234
+
+# URL
+baseurl:            ""
+#baseurl:            "" #For Root Domain
+permalink:          /:year/:month/:day/:title/
+
+# Markdown
+markdown:           kramdown
+
+theme: minima
+# Navigation
+nav:
+  - name:           "About"
+    href:           "/about"
+
+# Sass
+sass:
+  style:            :compressed
+
+# Scopes
+defaults:
+  -
+    scope:
+      path:         ""
+      type:         "pages"
+    values:
+      layout:       "page"
+  -
+    scope:
+      path:         ""
+      type:         "posts"
+    values:
+      layout:       "post"
+
+gems:
+  - jekyll-seo-tag
+
+sass:
+    sass_dir: ./_scss
