@@ -26,8 +26,11 @@ markdown:           kramdown
 theme: minima
 # Navigation
 nav:
+  - name:           "Home"
+    href:           ""
   - name:           "About"
     href:           "/about"
+
 
 # Sass
 sass:
