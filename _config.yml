@@ -27,7 +27,7 @@ theme: minima
 # Navigation
 nav:
   - name:           "Home"
-    href:           ""
+    href:           "/index"
   - name:           "About"
     href:           "/about"
 

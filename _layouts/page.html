@@ -2,11 +2,15 @@
 layout: default
 ---
 <header class="masthead">
-  <h1 class="masthead-title--small">
-    <a href="{{ site.baseurl }}/">back to home</a>
+  <h1 class="masthead-title">
+    <a href="{{ site.baseurl }}/">{{ site.name }}<span> Wu</span></a>
   </h1>
+  <nav class="masthead-nav">
+    {% for nav in site.nav %}
+    <a href="{{ nav.href }}">{{ nav.name }}</a>
+    {% endfor %}
+  </nav>
 </header>
 <div class="content page">
-  <h1 class="page-title">{{ page.title }}</h1>
   {{ content }}
 </div>
