@@ -24,6 +24,7 @@ permalink:          /:year/:month/:day/:title/
 markdown:           kramdown
 
 theme: minima
+
 # Navigation
 nav:
   - name:           "Home"
