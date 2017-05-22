@@ -3,7 +3,7 @@ h2 a:hover {color: black; text-decoration:none;}
 h1 a:visited {color: black; text-decoration:none;}
 h1 a:hover {color: black; text-decoration:none;}
 h2          { font-family: monospace, serif; margin: 0; }
-h1              { border-bottom: 2px solid #eee;font-family: monospace;}
+h1              { font-family: monospace;}
 .social_network {text-align: center;}
 h2 a         { color:black; text-decoration:none; }
 h3          {font-family: monospace}
