@@ -192,28 +192,18 @@ if __name__ == "__main__":
 
 5.  **Perform Final Translation & Merging:**
 
-      * **Condition:** You have the refined `punctuated_text.txt`.
-
-      * **Prompt:** Use this specific prompt to instruct the AI to merge lines and output structured JSON.
-
-        > You are an expert translator specializing in creating natural-sounding subtitles. I will provide you with numbered lines of a refined English script.
-        > Your task is to:
-
-        > 1.  Translate the text into simplified Chinese.
-        > 2.  **Combine consecutive lines where it makes a more complete and natural-sounding sentence.** You have the creative freedom to decide what to merge.
-        > 3.  You can simplify or remove punctuation in the final Chinese output as is natural for subtitles.
-        > 4.  **Your final output must be a single JSON array of objects.** Do not include any other text or explanation outside of this JSON array.
-
-        > Each object in the JSON array must represent a final subtitle line and contain two keys:
-
-        >   * `"original_lines"`: An array of the original integer line numbers that you merged to create this translated line.
-        >   * `"translated_text"`: A string containing the final, merged translated Chinese text.
-
-        > **Here is the text to process:**
-        > `[Paste the entire content of punctuated_text.txt here]`
-
-      * **Action:** Copy the AI's entire JSON response and save it as **`translated_blocks.json`**.
-
+You are an expert translator specializing in creating natural-sounding subtitles. I will provide you with numbered lines of English text from an ASR transcript.
+Your task is to:
+Translate the text into simplified Chinese.
+Combine consecutive lines where it makes a more complete and natural-sounding sentence. You have the creative freedom to decide what to merge, but make sure the combined line is less than 15 chinese characters, because this is for subtitle and need to fit inside a screen for people to read
+Remove unnecessary punctuation like commas or periods from the final Chinese text.
+Your final output must be a single JSON array of objects. Do not include any other text or explanation outside of this JSON array.
+Each object in the JSON array must represent a final subtitle line and contain two keys:
+"original_lines": An array of the original integer line numbers that you merged to create this translated line.
+"translated_text": A string containing the final, merged translated Chinese text.
+Example: If the input is:
+* **Action:** Copy the AI's entire JSON response and save it as **`translated_blocks.json`**.
+* 
 ### **Phase 3: Final Video Production**
 
 6.  **Rebuild the Final Subtitle File:**
