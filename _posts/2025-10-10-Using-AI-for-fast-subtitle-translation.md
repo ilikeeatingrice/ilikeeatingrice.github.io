@@ -4,7 +4,7 @@ This guide outlines the fully automated process for extracting auto-generated su
 
 -----
 
-## 1\. Required Tools
+## **1. Required Tools**
 
   * **Python:** With the `srt` library installed (`pip install srt`).
   * **yt-dlp:** For downloading video and subtitle files.
@@ -12,7 +12,7 @@ This guide outlines the fully automated process for extracting auto-generated su
 
 -----
 
-## 2\. The Core Python Script (`subtitle_tool.py`)
+## **2. The Core Python Script (`subtitle_tool.py`)**
 
 This is the final version of our script. It extracts numbered text for the AI and rebuilds the subtitle file from a structured JSON input, automatically handling merged timestamps.
 
@@ -146,7 +146,7 @@ if __name__ == "__main__":
 
 -----
 
-## 3\. The Step-by-Step Workflow
+## **3. The Step-by-Step Workflow**
 
 ### **Phase 1: Source Preparation**
 
@@ -157,7 +157,7 @@ if __name__ == "__main__":
         ```bash
         yt-dlp --write-auto-sub --sub-lang en --convert-subs srt -o "video.%(ext)s" "YOUTUBE_URL"
         ```
-      * **Result:** `video.mp4` and `video.en.srt` (or `.vtt`).
+      * **Result:** `video.mp4` (or `.webm` etc.) and `video.en.srt` (or `.vtt`).
 
 2.  **Convert VTT to SRT (If Necessary):**
 
@@ -192,18 +192,49 @@ if __name__ == "__main__":
 
 5.  **Perform Final Translation & Merging:**
 
-You are an expert translator specializing in creating natural-sounding subtitles. I will provide you with numbered lines of English text from an ASR transcript.
-Your task is to:
-Translate the text into simplified Chinese.
-Combine consecutive lines where it makes a more complete and natural-sounding sentence. You have the creative freedom to decide what to merge, but make sure the combined line is less than 15 chinese characters, because this is for subtitle and need to fit inside a screen for people to read
-Remove unnecessary punctuation like commas or periods from the final Chinese text.
-Your final output must be a single JSON array of objects. Do not include any other text or explanation outside of this JSON array.
-Each object in the JSON array must represent a final subtitle line and contain two keys:
-"original_lines": An array of the original integer line numbers that you merged to create this translated line.
-"translated_text": A string containing the final, merged translated Chinese text.
-Example: If the input is:
-* **Action:** Copy the AI's entire JSON response and save it as **`translated_blocks.json`**.
-* 
+      * **Condition:** You have the refined `punctuated_text.txt`.
+
+      * **Prompt:** Use this specific prompt to instruct the AI to merge lines and output structured JSON.
+
+        > You are an expert translator specializing in creating natural-sounding subtitles. I will provide you with numbered lines of English text from an ASR transcript.
+        > Your task is to:
+
+        >   * Translate the text into simplified Chinese.
+        >   * Combine consecutive lines where it makes a more complete and natural-sounding sentence. You have the creative freedom to decide what to merge, but **make sure the combined line is less than 15 chinese characters**, because this is for subtitle and need to fit inside a screen for people to read.
+        >   * Remove unnecessary punctuation like commas or periods from the final Chinese text.
+        >   * Your final output must be a **single JSON array of objects**. Do not include any other text or explanation outside of this JSON array.
+
+        > Each object in the JSON array must represent a final subtitle line and contain two keys:
+
+        >   * `"original_lines"`: An array of the original integer line numbers that you merged to create this translated line.
+        >   * `"translated_text"`: A string containing the final, merged translated Chinese text.
+
+        > *Example*: If the input is:
+
+        > ```
+        > 2 ||| at the opening credits
+        > 3 ||| of a French film, you're
+        > 4 ||| likely to see one name
+        > ```
+
+        > Your output for that section should be a JSON object like this:
+
+        > ```json
+        > {
+        >   "original_lines": [2, 3, 4],
+        >   "translated_text": "在法国电影的片头你很可能会看到一个名字"
+        > }
+        > ```
+
+        > Also remember, **do not have duplicate numbers in `original_lines` fields**. You need to keep incrementing this number, with no overlap.
+
+        > After the translation, do an extra round of review, compare it to the original english text, and make sure nothing is missed or mistranslated.
+
+        > Here is the text to process:
+        > `[Paste the entire content of punctuated_text.txt here]`
+
+      * **Action:** Copy the AI's entire JSON response and save it as **`translated_blocks.json`**.
+
 ### **Phase 3: Final Video Production**
 
 6.  **Rebuild the Final Subtitle File:**
@@ -211,28 +242,18 @@ Example: If the input is:
       * **Condition:** You have created `translated_blocks.json`.
       * **Command:**
         ```bash
-        python subtitle_tool.py rebuild translated_blocks.json video.zh.srt
+        python subtitle_tool.py rebuild translated_blocks.json hiking.zh.srt
         ```
-      * **Result:** A perfectly timed `video.zh.srt` file with natural, merged sentences.
+      * **Result:** A perfectly timed `hiking.zh.srt` file with natural, merged sentences.
 
-7.  **Handle Italics and Prepare for Styling:**
+7.  **Burn Subtitles into Video:**
 
-      * **Condition:** You want to burn subtitles with custom fonts and correctly render italics. This step is highly recommended.
+      * **Condition:** You have the final `.srt` file and are ready to create the final video.
       * **Command:**
         ```bash
-        ffmpeg -i video.zh.srt video.zh.ass
-        ```
-      * **Result:** A `video.zh.ass` file, which is a more powerful format that preserves italics and works best for styling.
-
-8.  **Burn Subtitles into Video:**
-
-      * **Condition:** You have the final `.ass` file and are ready to create the final video.
-      * **Command:**
-        ```bash
-        ffmpeg -i video.mp4 -vf "ass=video.zh.ass:fontsdir=./:force_style='FontName=Noto Sans SC,FontSize=22,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,BorderStyle=1,MarginV=25'" final_video_burned.mp4
+        ffmpeg -i .\video.webm -vf "subtitles=hiking.zh.srt:force_style='Fontname=Noto Serif Simplified Chinese,OutlineColour=&H80000000,Outline=1,Shadow=0'" hiking_video_burned_json.mp4
         ```
       * **Customization:**
-          * Place your desired font file (e.g., a `.ttf` or `.otf`) in the same folder.
-          * Change `FontName` to your font's name.
-          * Adjust `FontSize`, `PrimaryColour` (White: `&H00FFFFFF`, Yellow: `&H0000FFFF`), `OutlineColour` (Black: `&H00000000`), and `MarginV` (distance from bottom) as needed.
-      * **Result:** Your final video with high-quality, custom-styled subtitles permanently burned in.
+          * This command uses the `subtitles` filter, which requires the font (`Noto Serif Simplified Chinese` in this case) to be **installed on your system**.
+          * You can adjust the `OutlineColour`, `Outline`, and `Shadow` parameters to change the look.
+      * **Result:** Your final video (`hiking_video_burned_json.mp4`) with high-quality, custom-styled subtitles permanently burned in.
