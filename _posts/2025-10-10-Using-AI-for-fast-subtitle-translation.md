@@ -257,3 +257,4 @@ if __name__ == "__main__":
           * This command uses the `subtitles` filter, which requires the font (`Noto Serif Simplified Chinese` in this case) to be **installed on your system**.
           * You can adjust the `OutlineColour`, `Outline`, and `Shadow` parameters to change the look.
       * **Result:** Your final video (`hiking_video_burned_json.mp4`) with high-quality, custom-styled subtitles permanently burned in.
+      * **Example video:** https://www.bilibili.com/video/BV1b64DzGEo1/?vd_source=2a7469a8a99f20d88506245637285dc1
