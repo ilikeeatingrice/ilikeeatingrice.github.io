@@ -1,5 +1,3 @@
-# The Architecture of a Trend
-
 Fashion often appears to be a collective, spontaneous decision. A style is suddenly everywhere, and just as quickly, it is gone. This process is not an accident. It is a complex and deliberate system built on psychology, economics, and industrial-scale coordination.
 
 #### 1. Who Decides What Is "In"?
@@ -73,12 +71,12 @@ In essence, the fashion system is designed to create a sense of dissatisfaction 
 
 ### Sources Used
 
-* Fashion Careers: Guide to Trend Forecasting | FRA
+* Fashion Careers: Guide to Trend Forecasting - FRA
 * Fashion Forecasting: Predicting the Future of Style - KIDAT
 * Do You Believe in Oracles? Trend Forecasting is Trending in the Fashion Industry - Medium
 * The Psychology Behind Trend Cycles: Why We Can't Resist the Latest Fashion Fads - Fashion is Psychology
 * The real reason people follow trends according to psychology and fashion professors - Lariat News
-* Why We Fall for Social Media Trends | Psychology Today
+* Why We Fall for Social Media Trends - Psychology Today
 * In-group and out-group - Wikipedia
 * How Fashion Brands Turn Trends into Profits - Business Case Studies
 * Planned Obsolescence Explained: Strategies, Examples, and Consumer Impact - Investopedia
@@ -93,7 +91,7 @@ In essence, the fashion system is designed to create a sense of dissatisfaction 
 * Fashion Waste Facts and Statistics - Business Waste
 * Global Fashion Industry Employment Statistics 2025 - Colorful Socks
 * 80+ Fashion Industry Statistics of 2025 - Bizplanr
-* What is slow fashion? | Oxfam GB
+* What is slow fashion? - Oxfam GB
 * Slow fashion - Wikipedia
 * What Is Slow Fashion: The Ultimate Guide - Italian Artisan
 * Embracing Quality Over Quantity: The Slow Fashion Movement - DiVERGE Sneakers
@@ -102,3 +100,5 @@ In essence, the fashion system is designed to create a sense of dissatisfaction 
 * H&M called out for "greenwashing" in its Conscious fashion collection - Dezeen
 * Slow Fashion: A Lesson in Sustainability from the World of Luxury Brands - Retailist Mag
 * Slow Fashion: Can Luxury Supply Chains Really Be Sustainable - All Things Supply Chain
+
+*This article is based on a discussion with Gemini 2.5 Pro.*
