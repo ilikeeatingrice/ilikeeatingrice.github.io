@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Using AI For Fast Subtitle Translation"
+date: 2025-10-10
+---
+
 # Comprehensive Subtitle Translation & Burn-in Workflow
 
 This guide outlines the fully automated process for extracting auto-generated subtitles, using AI to create high-quality, natural-sounding translations, and burning the final, styled subtitles into a video file.
