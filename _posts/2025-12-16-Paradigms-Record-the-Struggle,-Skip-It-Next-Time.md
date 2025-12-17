@@ -1,3 +1,8 @@
+---
+layout: post
+title: "Paradigms: Record the Struggle, Skip It Next Time"
+date: 2025-12-16
+---
 AI coding assistants have a memory problem. They're stateless. Every conversation starts fresh.
 
 This is fine for tasks the AI gets right on the first try. But the interesting tasks—the ones specific to your codebase, your conventions, your stack—usually require iteration. You guide the AI, it makes mistakes, you correct it, and eventually you arrive at something good.
@@ -41,6 +46,8 @@ Paradigm
 ├── gotchas: warnings extracted from corrections
 └── metadata: author, version, timestamps
 ```
+
+![Paradigm structure diagram](/static/diagram.jpg)
 
 **Parameters** define the blanks. "Feature name?" "Unique ID?" These get substituted into the steps before the AI sees them.
 
