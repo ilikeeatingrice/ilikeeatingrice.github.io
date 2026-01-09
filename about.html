@@ -4,63 +4,72 @@ permalink: /about/
 layout: page
 ---
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<link rel=stylesheet type=text/css href="/static/style.css">
+<link rel="stylesheet" type="text/css" href="/static/style.css">
 <style>
-  /* Fix spacing issues */
-  .page {
-    margin-top: 1em !important; /* Bring content closer to header */
+  .about-section {
+    margin: 2rem 0;
   }
-  h2 {
-    margin-bottom: 0.5em !important; /* Add space between headers and content */
+  .about-section h2 {
+    margin-bottom: 1rem;
+  }
+  .about-entry {
+    overflow: auto;
+    margin-bottom: 1rem;
+  }
+  .about-entry p {
+    margin: 0;
+    padding-top: 1.25rem;
+  }
+  .about-entry ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+  .about-entry:has(ul) p {
+    padding-top: 0;
   }
 </style>
+
 <p>Currently, I am working at Microsoft as a software engineer. Thank you for stopping by, please feel free to contact me at <a href="mailto:txw180@gmail.com">txw180@gmail.com</a>.</p>
+
 <div class="social_network">
-  <a class="icon-link facebook" href="https://www.facebook.com/tiancheng.wu.7" target="_blank"><i
-      class="fa fa-facebook"></i></a>
-  <a class="icon-link linkedin" href="https://www.linkedin.com/pub/tiancheng-wu/7b/a40/68" target="_blank"><i
-      class="fa fa-linkedin"></i></a>
+  <a class="icon-link linkedin" href="https://www.linkedin.com/pub/tiancheng-wu/7b/a40/68" target="_blank"><i class="fa fa-linkedin"></i></a>
   <a class="icon-link github" href="https://github.com/ilikeeatingrice" target="_blank"><i class="fa fa-github"></i></a>
   <a class="icon-link envelope" href="mailto:txw180@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>
 </div>
+
+<div class="about-section">
+  <h2>Education</h2>
+  <div class="about-entry">
+    <img class="logo" src="/static/250px-Chongqing_University_Logo.png">
+    <p>BS, Software Engineering, Chongqing University</p>
+  </div>
+  <div class="about-entry">
+    <img class="logo" src="/static/200px-Case_Western_Reserve_University_seal.svg.png">
+    <p>MS, Computer Science, Case Western Reserve University</p>
+  </div>
 </div>
-<div id="resume">
-  <div name="info" id="info" class="information">
-    <hr size=1>
-    <h2 id="edu">Education</h2>
-    <div id="bs">
-      <img class="logo" id="bs" name="bslogo" src="/static/250px-Chongqing_University_Logo.png">
-      <p>BS, Software Engineering, Chongqing University</p>
-    </div>
-    <div id="ms">
-      <img class="logo" id="ms" name="mslogo" src="/static/200px-Case_Western_Reserve_University_seal.svg.png">
-      <p>MS, Computer Science, Case Western Reserve University</p>
-    </div>
-    <hr size=1>
-    <h2 id="exp">Current</h2>
-    <div id="work">
-      <img class="logo" id="microsoft" name="microsoft" src="/static/microsoft.jpg">
-      <p>06/2014-present Software engineer at Microsoft</p>
-      <ul>
-        <li>Whole Page Revenue Opitimazation - Bing.com</li>
-      </ul>
-      <ul>
-        <li>Microsoft Enterprise Knowledge (MEG) / Satori</li>
-      </ul>
-      <ul>
-        <li>Cortana Core Science</li>
-      </ul>
-    </div>
-    <hr size=1>
-    <h2 id="exp">Experience</h2>
-    <div id="work" style="overflow: auto; width: 100%;">
-      <img class="logo" id="cerner" name="cernerlogo" src="/static/cernerlogo.png">
-      <p>09/2014-06/2017 Software engineer at Cerner Corporation</p>
-    </div>
-    <div id="intern" style="overflow: auto; width: 100%;">
-      <img class="logo" id="intern" name="internlogo" src="/static/FALogo_FA_Vert-rgb.png">
-      <p>06/2013-08/2013 Summer internship at First American App Development Team</p>
-    </div>
-          </div>
-        </div>
-        <hr size=1>
+
+<div class="about-section">
+  <h2>Current</h2>
+  <div class="about-entry">
+    <img class="logo" src="/static/microsoft.jpg">
+    <p>2017 - present, Software Engineer at Microsoft</p>
+    <ul>
+      <li>Whole Page Revenue Optimization - Bing.com</li>
+      <li>Microsoft Enterprise Knowledge (MEG) / Satori</li>
+      <li>Cortana Core Science</li>
+    </ul>
+  </div>
+</div>
+
+<div class="about-section">
+  <h2>Experience</h2>
+  <div class="about-entry">
+    <img class="logo" src="/static/cernerlogo.png">
+    <p>2014 - 2017, Software Engineer at Cerner Corporation</p>
+  </div>
+  <div class="about-entry">
+    <img class="logo" src="/static/FALogo_FA_Vert-rgb.png">
+    <p>Summer 2013, Intern at First American</p>
+  </div>
+</div>
