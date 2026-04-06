@@ -128,6 +128,21 @@ ExecStart=/home/tianc/bin/llama-server \
 
 OpenAI-compatible API at `localhost:8001`. 128K context window. 33+ tok/s generation. 2.9 GB VRAM headroom.
 
+## Thinking mode: on vs off
+
+Qwen 3.5 has a built-in "reasoning" mode where it thinks in `<think>` tags before answering. I tested both modes on a real podcast transcript extraction (10,909 prompt tokens, structured JSON output).
+
+| Mode | Gen tok/s | Output tokens | Wall time | Cases extracted |
+|---|---:|---:|---:|---:|
+| Reasoning OFF | 41.3 | 2,317 | 62.2s | 3 |
+| Reasoning ON | 42.8 | 2,054 | 49.2s | 3 |
+
+Both modes extracted identical results: 3 victims, same names, same details, same confidence scores (0.95).
+
+The model didn't actually engage thinking in either mode. When the prompt says "Return ONLY valid JSON, no markdown or explanation," the model skips reasoning entirely — even with `--reasoning on`. The thinking budget goes unused.
+
+For structured extraction tasks with explicit output format constraints, thinking mode makes no difference. It would likely matter more for open-ended analysis or ambiguous matching, but for JSON extraction from transcripts, `--reasoning off` is the right call — it avoids any accidental thinking overhead.
+
 ## The display blackout incident
 
 During testing, repeatedly loading and unloading models (filling 24 GB of VRAM 10+ times) caused one of my monitors to go black. The RTX 4090 in WSL2 shares VRAM between Windows display and CUDA compute. Under extreme pressure, the display compositor loses its allocations and can't recover without a reboot.
