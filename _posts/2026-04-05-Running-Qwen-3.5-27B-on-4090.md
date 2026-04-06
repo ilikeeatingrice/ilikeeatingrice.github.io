@@ -4,8 +4,6 @@ title: "Running Qwen 3.5 27B on 4090"
 date: 2026-04-05
 ---
 
-I spent a day benchmarking Qwen 3.5 27B on my RTX 4090. The goal: find the best way to run this model locally for a podcast transcript extraction pipeline that needs long context. Here's everything I found.
-
 ## The model
 
 Qwen 3.5 27B has a hybrid attention architecture that makes it unusually efficient on consumer GPUs. Out of its 64 layers:
