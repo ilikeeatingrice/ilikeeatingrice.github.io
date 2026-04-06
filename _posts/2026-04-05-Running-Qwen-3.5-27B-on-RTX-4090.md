@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Running Qwen 3.5 27B on 4090"
+title: "Running Qwen 3.5 27B on RTX 4090"
 date: 2026-04-05
 ---
 
