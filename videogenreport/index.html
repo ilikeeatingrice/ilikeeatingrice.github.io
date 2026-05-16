@@ -266,20 +266,20 @@ sitemap: false
 
   <main>
     <section>
-      <h2>先说结论</h2>
+      <h2>项目判断</h2>
       <div class="summary">
         <div class="card">
-          <strong>真正贵的是视频生成</strong>
-          <div class="number">约 ¥10-100+</div>
-          <p>一个用户满意的短视频项目，通常不是生成一次就结束，而是多次抽卡、重试、换镜头。</p>
+          <strong>主要成本来自视频生成</strong>
+          <div class="number">约 ¥30-100+</div>
+          <p>用户做出一个满意的视频，通常会多生成几次，挑一个最好的版本。</p>
         </div>
         <div class="card">
-          <strong>带宽不是第一大头</strong>
+          <strong>文件播放成本比较可控</strong>
           <div class="number">约 ¥0.5/GB</div>
-          <p>早期可以先用对象存储直出视频。播放量起来后，再接 CDN。</p>
+          <p>腾讯云 COS 中国大陆多地外网下行按量价为 ¥0.5/GB，早期可以先用对象存储。</p>
         </div>
         <div class="card">
-          <strong>合规要从第一天做</strong>
+          <strong>合规需要提前设计</strong>
           <div class="number">高优先级</div>
           <p>尤其是 AI 标识、水印、人脸/声音授权、内容审核、个人信息保护。</p>
         </div>
@@ -305,13 +305,13 @@ sitemap: false
         <tbody>
           <tr>
             <td>DeepSeek 创意规划</td>
-            <td>约 ¥0.05-0.20 / 次</td>
-            <td>DeepSeek V4 Pro 官方价约为输入 $1.74 / 百万 tokens、输出 $3.48 / 百万 tokens。一次规划假设 5,000 输入 + 2,000 输出，约 $0.016，按 $1≈¥6.8 约 ¥0.11。</td>
+            <td>约 ¥0.02-0.10 / 次</td>
+            <td>DeepSeek 中文官方价格页显示，V4 Pro 现价为输入缓存未命中 ¥3/百万 tokens、输出 ¥6/百万 tokens；缓存命中输入更低。一次规划假设 5,000 输入 + 2,000 输出，约 ¥0.015 + ¥0.012 = ¥0.027。留一点冗余，按几分钱到一毛钱估。</td>
           </tr>
           <tr>
             <td>视频生成 API</td>
-            <td>约 ¥4-15 / 条 8 秒片段</td>
-            <td>可灵第三方价格页显示 Kling 2.6 Pro 无音频约 $0.07/秒、带音频约 $0.14/秒；按 ¥6.8 汇率，大约 ¥0.5-1.0/秒。Seedance 有媒体报道为 46 元/百万 tokens，实际换算到秒要看模型和模式，所以这里用 ¥0.5-1.5/秒做预算带。</td>
+            <td>约 ¥8 / 条 8 秒片段起</td>
+            <td>Seedance 2.0 的中文报道引用官方计费口径：不含视频输入 ¥46/百万 tokens，实测 15 秒约 30.888 万 tokens，约 ¥14.2，也就是接近 ¥1/秒。可灵的大陆官方 API 价格页没有找到可直接公开访问的 RMB 页面，建议后续以快手/可灵商务合同为准。</td>
           </tr>
           <tr>
             <td>反复重试</td>
@@ -320,8 +320,8 @@ sitemap: false
           </tr>
           <tr>
             <td>对象存储和带宽</td>
-            <td>通常低于生成成本</td>
-            <td>假设一个预览视频 20MB，播放 100 次是 2GB。按对象存储公网下行约 ¥0.3-0.6/GB 粗估，也就是约 ¥0.6-1.2。</td>
+            <td>按播放量计</td>
+            <td>腾讯云 COS 文档显示，北京、上海、广州、南京、成都、重庆等地域外网下行流量为 ¥0.5/GB。假设一个预览视频 20MB，播放 100 次约 2GB，也就是约 ¥1。</td>
           </tr>
           <tr>
             <td>云服务器</td>
@@ -347,11 +347,11 @@ sitemap: false
           </tr>
           <tr>
             <td>视频 API 成本</td>
-            <td>72 秒 × ¥0.5-1.5/秒 = 约 ¥36-108</td>
+            <td>按 Seedance 约 ¥1/秒口径，72 秒 × ¥1/秒 = 约 ¥72。若供应商合同价更低或更高，这里会相应变化。</td>
           </tr>
           <tr>
             <td>DeepSeek 规划成本</td>
-            <td>约 ¥0.1，可忽略不计</td>
+            <td>约 ¥0.03-0.10，可忽略不计</td>
           </tr>
           <tr>
             <td>存储和播放</td>
@@ -359,7 +359,7 @@ sitemap: false
           </tr>
           <tr>
             <td><strong>单个满意项目总成本</strong></td>
-            <td><strong>大约 ¥40-120，复杂项目可能更高</strong></td>
+            <td><strong>大约 ¥70-90 起，复杂项目或多次重试会更高</strong></td>
           </tr>
         </tbody>
       </table>
@@ -377,17 +377,17 @@ sitemap: false
           <tr>
             <td>小范围内测</td>
             <td>50 人，每人 1 个项目</td>
-            <td>约 ¥2,000-6,000，加上服务器和存储几百元</td>
+            <td>约 ¥3,500-5,000 起，加上服务器和存储几百元</td>
           </tr>
           <tr>
             <td>早期 beta</td>
             <td>500 人，每人 1 个项目</td>
-            <td>约 ¥20,000-60,000，必须有积分或付费限制</td>
+            <td>约 ¥35,000-50,000 起，必须有积分或付费限制</td>
           </tr>
           <tr>
             <td>正式推广</td>
             <td>5,000 人，每人 1 个项目</td>
-            <td>约 ¥200,000-600,000，供应商合同和风控会变成核心问题</td>
+            <td>约 ¥350,000-500,000 起，供应商合同和风控会变成核心问题</td>
           </tr>
         </tbody>
       </table>
@@ -474,11 +474,11 @@ sitemap: false
     <section>
       <h2>参考资料</h2>
       <ul>
-        <li><a href="https://api-docs.deepseek.com/quick_start/pricing/">DeepSeek 官方模型与价格</a></li>
+        <li><a href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing">DeepSeek 中文官方模型与价格</a></li>
         <li><a href="https://api-docs.deepseek.com/updates/">DeepSeek API 更新日志</a></li>
-        <li><a href="https://klingapi.com/pricing">Kling API 价格页，用于估算可灵 API 秒级成本</a></li>
-        <li><a href="https://cntechpost.com/2026/03/04/bytedance-announces-api-pricing-seedance-2-0/">CnTechPost 关于 Seedance 2.0 API 价格的报道</a></li>
-        <li><a href="https://developer.volcengine.com/articles/7628567056649125942">火山引擎：Seedance 2.0 API 全面上线</a></li>
+        <li><a href="https://www.opcbase.net/article/volcengine-seedance-2-0-api-video">OPCBASE：Seedance 2.0 API 按官方定价测算约 1 元/秒</a></li>
+        <li><a href="https://epaper.tianjinwe.com/tjrb/resfile/2026-03-12/07/07.pdf">天津日报：Seedance 2.0 商业化定价进入“1 元时代”</a></li>
+        <li><a href="https://developer.volcengine.com/articles/7628567056649125942">火山引擎开发者：Seedance 2.0 API 相关介绍</a></li>
         <li><a href="https://cloud.tencent.com/document/product/436/53863">腾讯云 COS 流量费用说明</a></li>
         <li><a href="https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm">网信办关于 AI 生成合成内容标识的通知</a></li>
         <li><a href="https://www.loc.gov/item/global-legal-monitor/2023-04-25/china-provisions-on-deep-synthesis-technology-enter-into-effect/">中国深度合成规定摘要，Library of Congress</a></li>
