@@ -10,16 +10,11 @@ sitemap: false
   <title>AI 视频产品在中国大陆上线：成本和合规备忘录</title>
   <style>
     :root {
-      --ink: #17212b;
-      --muted: #5f6b7a;
-      --line: #dce2ea;
-      --bg: #f5f6f8;
-      --panel: #ffffff;
-      --dark: #111827;
-      --blue: #1f5eff;
-      --red: #b42318;
-      --amber: #9a5a00;
-      --green: #147a54;
+      --ink: #202020;
+      --muted: #686868;
+      --line: #dedede;
+      --soft: #f7f7f7;
+      --link: #2454a6;
     }
 
     * {
@@ -28,16 +23,14 @@ sitemap: false
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, "Noto Sans SC", sans-serif;
       color: var(--ink);
-      background: var(--bg);
-      line-height: 1.62;
+      background: #fff;
+      line-height: 1.7;
     }
 
     header {
-      background: var(--dark);
-      color: #fff;
-      padding: 40px 24px 34px;
+      padding: 44px 24px 22px;
     }
 
     .wrap,
@@ -47,37 +40,46 @@ sitemap: false
       margin: 0 auto;
     }
 
+    .wrap,
+    main,
+    footer {
+      max-width: 860px;
+    }
+
     .top-links {
       display: flex;
       justify-content: flex-end;
-      margin-bottom: 24px;
+      margin-bottom: 34px;
     }
 
     .top-links a {
-      color: #d1d5db;
-      font-size: 14px;
-      font-weight: 700;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 400;
       text-decoration: none;
     }
 
     h1 {
       margin: 0 0 10px;
-      font-size: 32px;
-      line-height: 1.2;
+      font-size: 30px;
+      line-height: 1.28;
       letter-spacing: 0;
+      font-weight: 650;
     }
 
     h2 {
-      margin: 0 0 14px;
-      font-size: 24px;
-      line-height: 1.25;
+      margin: 0 0 16px;
+      font-size: 21px;
+      line-height: 1.35;
       letter-spacing: 0;
+      font-weight: 650;
     }
 
     h3 {
-      margin: 22px 0 8px;
-      font-size: 18px;
+      margin: 26px 0 8px;
+      font-size: 16px;
       letter-spacing: 0;
+      font-weight: 650;
     }
 
     p {
@@ -85,7 +87,7 @@ sitemap: false
     }
 
     a {
-      color: var(--blue);
+      color: var(--link);
       text-decoration: none;
     }
 
@@ -94,51 +96,47 @@ sitemap: false
     }
 
     main {
-      padding: 24px;
+      padding: 0 24px 28px;
     }
 
     section {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 24px;
-      margin-bottom: 18px;
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
     }
 
     .subtitle {
-      max-width: 760px;
-      color: #d1d5db;
-      font-size: 16px;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 15px;
     }
 
     .meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 18px;
+      gap: 10px 18px;
+      margin-top: 20px;
     }
 
     .pill {
       display: inline-flex;
       align-items: center;
       min-height: 30px;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      color: #fff;
+      padding: 0;
+      color: var(--muted);
       font-size: 13px;
     }
 
     .summary {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
+      gap: 0;
+      border: 1px solid var(--line);
+      border-bottom: 0;
     }
 
     .card {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fbfcfe;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
       padding: 16px;
     }
 
@@ -148,65 +146,63 @@ sitemap: false
     }
 
     .number {
-      font-size: 24px;
-      font-weight: 700;
+      font-size: 22px;
+      font-weight: 650;
       line-height: 1.25;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 14px 0;
+      margin: 14px 0 4px;
       font-size: 14px;
     }
 
     th,
     td {
       border: 1px solid var(--line);
-      padding: 10px 12px;
+      padding: 9px 10px;
       text-align: left;
       vertical-align: top;
     }
 
     th {
-      background: #eef1f5;
-      font-weight: 700;
+      background: var(--soft);
+      font-weight: 650;
     }
 
     code {
       font-family: Consolas, Monaco, monospace;
-      background: #eef1f5;
-      border-radius: 5px;
+      background: var(--soft);
       padding: 2px 5px;
       font-size: 0.95em;
     }
 
     .note {
-      border-left: 4px solid var(--blue);
-      background: #f3f6ff;
-      padding: 14px 16px;
-      border-radius: 6px;
-      margin: 14px 0;
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      margin: 18px 0 0;
     }
 
     .warning {
-      border-left-color: var(--amber);
-      background: #fff8ed;
+      color: var(--muted);
     }
 
     .risk-high {
-      color: var(--red);
-      font-weight: 700;
+      color: var(--ink);
+      font-weight: 650;
     }
 
     .risk-med {
-      color: var(--amber);
-      font-weight: 700;
+      color: var(--ink);
+      font-weight: 650;
     }
 
     .risk-low {
-      color: var(--green);
-      font-weight: 700;
+      color: var(--ink);
+      font-weight: 650;
     }
 
     ul {
@@ -219,14 +215,15 @@ sitemap: false
     }
 
     footer {
-      padding: 4px 24px 36px;
+      border-top: 1px solid var(--line);
+      padding: 18px 24px 38px;
       color: var(--muted);
       font-size: 13px;
     }
 
     @media (max-width: 760px) {
       header {
-        padding: 30px 18px 26px;
+        padding: 30px 18px 18px;
       }
 
       main {
@@ -234,7 +231,7 @@ sitemap: false
       }
 
       section {
-        padding: 18px;
+        padding: 24px 0;
       }
 
       .summary {
@@ -242,7 +239,7 @@ sitemap: false
       }
 
       h1 {
-        font-size: 27px;
+        font-size: 25px;
       }
     }
   </style>
@@ -254,12 +251,9 @@ sitemap: false
         <a href="/reports/">过往报告</a>
       </div>
       <h1>AI 视频产品在中国大陆上线：成本和合规备忘录</h1>
-      <p class="subtitle">围绕中国大陆部署和使用场景，整理 AI 视频应用的主要成本项、估算口径和基础合规风险。</p>
       <div class="meta">
         <span class="pill">版本：2026-05-16</span>
         <span class="pill">用途：内部讨论</span>
-        <span class="pill">市场：中国大陆</span>
-        <span class="pill">非法律意见</span>
       </div>
     </div>
   </header>
@@ -284,9 +278,7 @@ sitemap: false
           <p>尤其是 AI 标识、水印、人脸/声音授权、内容审核、个人信息保护。</p>
         </div>
       </div>
-      <div class="note warning">
-        <p><strong>价格提醒：</strong>AI 视频 API 的价格变化很快，而且“官网价、企业合同价、聚合 API 价格”可能完全不同。下面数字只用于早期成本估算，不是采购报价。</p>
-      </div>
+      <p class="note">价格会随供应商、合同和调用渠道变化。下文数字只用于早期成本估算，不作为采购报价。</p>
     </section>
 
     <section>
@@ -392,9 +384,7 @@ sitemap: false
         </tbody>
       </table>
 
-      <div class="note">
-        <p><strong>计费口径说明：</strong>如果产品采用积分制，通常需要把每次生成尝试计入消耗，而不只是按最终下载的视频计费。这样更容易和实际 API 成本对应。</p>
-      </div>
+      <p class="note">如果采用积分制，生成尝试次数需要计入消耗；只按最终下载计费，和实际 API 成本不容易对齐。</p>
     </section>
 
     <section>
@@ -486,8 +476,5 @@ sitemap: false
     </section>
   </main>
 
-  <footer>
-    <p>这份 memo 只用于早期业务讨论，不构成法律或采购建议。正式上线前，请以供应商合同、云服务实际报价和中国本地法律顾问意见为准。</p>
-  </footer>
 </body>
 </html>
