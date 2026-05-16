@@ -1,0 +1,493 @@
+---
+layout: null
+sitemap: false
+---
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 视频产品在中国大陆上线：成本和合规备忘录</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #5f6b7a;
+      --line: #dce2ea;
+      --bg: #f5f6f8;
+      --panel: #ffffff;
+      --dark: #111827;
+      --blue: #1f5eff;
+      --red: #b42318;
+      --amber: #9a5a00;
+      --green: #147a54;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+
+    header {
+      background: var(--dark);
+      color: #fff;
+      padding: 40px 24px 34px;
+    }
+
+    .wrap,
+    main,
+    footer {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .top-links {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 24px;
+    }
+
+    .top-links a {
+      color: #d1d5db;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 24px;
+    }
+
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 18px;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      color: #d1d5db;
+      font-size: 16px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 13px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+      padding: 16px;
+    }
+
+    .card strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .number {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef1f5;
+      font-weight: 700;
+    }
+
+    code {
+      font-family: Consolas, Monaco, monospace;
+      background: #eef1f5;
+      border-radius: 5px;
+      padding: 2px 5px;
+      font-size: 0.95em;
+    }
+
+    .note {
+      border-left: 4px solid var(--blue);
+      background: #f3f6ff;
+      padding: 14px 16px;
+      border-radius: 6px;
+      margin: 14px 0;
+    }
+
+    .warning {
+      border-left-color: var(--amber);
+      background: #fff8ed;
+    }
+
+    .risk-high {
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .risk-med {
+      color: var(--amber);
+      font-weight: 700;
+    }
+
+    .risk-low {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    ul {
+      margin: 8px 0 0 20px;
+      padding: 0;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    footer {
+      padding: 4px 24px 36px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        padding: 30px 18px 26px;
+      }
+
+      main {
+        padding: 18px;
+      }
+
+      section {
+        padding: 18px;
+      }
+
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 27px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="top-links">
+        <a href="/reports/">过往报告</a>
+      </div>
+      <h1>AI 视频产品在中国大陆上线：成本和合规备忘录</h1>
+      <p class="subtitle">这是一份给业务伙伴看的简版 memo。假设我们先做 V1：微信小程序或 Web 页面，用户输入想法，DeepSeek 做创意规划，可灵或 Seedance 负责生成视频。</p>
+      <div class="meta">
+        <span class="pill">版本：2026-05-16</span>
+        <span class="pill">用途：内部讨论</span>
+        <span class="pill">市场：中国大陆</span>
+        <span class="pill">非法律意见</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>先说结论</h2>
+      <div class="summary">
+        <div class="card">
+          <strong>真正贵的是视频生成</strong>
+          <div class="number">约 ¥10-100+</div>
+          <p>一个用户满意的短视频项目，通常不是生成一次就结束，而是多次抽卡、重试、换镜头。</p>
+        </div>
+        <div class="card">
+          <strong>带宽不是第一大头</strong>
+          <div class="number">约 ¥0.5/GB</div>
+          <p>早期可以先用对象存储直出视频。播放量起来后，再接 CDN。</p>
+        </div>
+        <div class="card">
+          <strong>合规要从第一天做</strong>
+          <div class="number">高优先级</div>
+          <p>尤其是 AI 标识、水印、人脸/声音授权、内容审核、个人信息保护。</p>
+        </div>
+      </div>
+      <div class="note warning">
+        <p><strong>价格提醒：</strong>AI 视频 API 的价格变化很快，而且“官网价、企业合同价、聚合 API 价格”可能完全不同。下面数字是为了讨论商业模型的 ballpark，不是采购报价。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>成本概览</h2>
+      <p>一个比较合理的 V1 架构是：一台云服务器负责账号、订单和任务状态；视频文件放对象存储；AI 视频生成直接调用可灵或 Seedance；DeepSeek 只负责把用户想法整理成镜头方案。</p>
+
+      <h3>粗略单次成本怎么估</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>项目</th>
+            <th>保守估算</th>
+            <th>为什么这样估</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>DeepSeek 创意规划</td>
+            <td>约 ¥0.05-0.20 / 次</td>
+            <td>DeepSeek V4 Pro 官方价约为输入 $1.74 / 百万 tokens、输出 $3.48 / 百万 tokens。一次规划假设 5,000 输入 + 2,000 输出，约 $0.016，按 $1≈¥6.8 约 ¥0.11。</td>
+          </tr>
+          <tr>
+            <td>视频生成 API</td>
+            <td>约 ¥4-15 / 条 8 秒片段</td>
+            <td>可灵第三方价格页显示 Kling 2.6 Pro 无音频约 $0.07/秒、带音频约 $0.14/秒；按 ¥6.8 汇率，大约 ¥0.5-1.0/秒。Seedance 有媒体报道为 46 元/百万 tokens，实际换算到秒要看模型和模式，所以这里用 ¥0.5-1.5/秒做预算带。</td>
+          </tr>
+          <tr>
+            <td>反复重试</td>
+            <td>乘以 2-5 倍</td>
+            <td>AI 视频经常需要抽卡。用户可能因为手、脸、镜头运动、品牌质感不满意而重试。</td>
+          </tr>
+          <tr>
+            <td>对象存储和带宽</td>
+            <td>通常低于生成成本</td>
+            <td>假设一个预览视频 20MB，播放 100 次是 2GB。按对象存储公网下行约 ¥0.3-0.6/GB 粗估，也就是约 ¥0.6-1.2。</td>
+          </tr>
+          <tr>
+            <td>云服务器</td>
+            <td>约 ¥100-500 / 月起</td>
+            <td>V1 不在服务器上渲染视频，只做业务逻辑，所以一台普通云服务器即可。真正的压力在视频 API 和文件分发。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>一个用户项目的例子</h3>
+      <p>假设用户要做一个 20-30 秒的宣传短片，我们拆成 3 个 8 秒镜头。每个镜头平均生成 3 次才挑到满意版本。</p>
+      <table>
+        <thead>
+          <tr>
+            <th>计算步骤</th>
+            <th>估算</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>原始生成量</td>
+            <td>3 个镜头 × 3 次尝试 × 8 秒 = 72 秒生成量</td>
+          </tr>
+          <tr>
+            <td>视频 API 成本</td>
+            <td>72 秒 × ¥0.5-1.5/秒 = 约 ¥36-108</td>
+          </tr>
+          <tr>
+            <td>DeepSeek 规划成本</td>
+            <td>约 ¥0.1，可忽略不计</td>
+          </tr>
+          <tr>
+            <td>存储和播放</td>
+            <td>早期通常 ¥1-5 以内，除非视频被大量分享</td>
+          </tr>
+          <tr>
+            <td><strong>单个满意项目总成本</strong></td>
+            <td><strong>大约 ¥40-120，复杂项目可能更高</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>月度成本感受</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>场景</th>
+            <th>假设</th>
+            <th>大概成本</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>小范围内测</td>
+            <td>50 人，每人 1 个项目</td>
+            <td>约 ¥2,000-6,000，加上服务器和存储几百元</td>
+          </tr>
+          <tr>
+            <td>早期 beta</td>
+            <td>500 人，每人 1 个项目</td>
+            <td>约 ¥20,000-60,000，必须有积分或付费限制</td>
+          </tr>
+          <tr>
+            <td>正式推广</td>
+            <td>5,000 人，每人 1 个项目</td>
+            <td>约 ¥200,000-600,000，供应商合同和风控会变成核心问题</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <p><strong>商业上最重要的一句话：</strong>不要按“用户最终下载了一个视频”收费，要按“每次生成尝试”消耗积分。否则用户反复抽卡，成本会被平台吃掉。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>法律和合规风险</h2>
+      <p>这个产品在中国大陆最大的风险不是技术，而是“生成了不该生成的东西”，或者“用了不该用的人脸、声音、品牌、素材”。V1 不需要做得很重，但底线要先搭起来。</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>风险</th>
+            <th>等级</th>
+            <th>业务上怎么理解</th>
+            <th>V1 建议</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AI 生成内容标识</td>
+            <td><span class="risk-high">高</span></td>
+            <td>中国已经明确要求 AI 生成/合成内容需要标识。视频尤其敏感。</td>
+            <td>导出视频默认加“AI 生成”水印或标识，不提供去标识功能。页面和用户协议也写清楚。</td>
+          </tr>
+          <tr>
+            <td>人脸、声音、肖像</td>
+            <td><span class="risk-high">高</span></td>
+            <td>如果用户上传真人照片、做换脸、数字人、口型同步、声音克隆，会进入深度合成和个人敏感信息范围。</td>
+            <td>上传人脸/声音时必须确认“我有授权”。先屏蔿名人、公众人物、未成年人和政治人物。</td>
+          </tr>
+          <tr>
+            <td>违法和敏感内容</td>
+            <td><span class="risk-high">高</span></td>
+            <td>AI 视频可能被用于谣言、诈骗、色情、暴力、政治敏感内容、虚假新闻。</td>
+            <td>提示词、上传素材、生成结果都要审核。公开分享前再过一遍审核。</td>
+          </tr>
+          <tr>
+            <td>版权和品牌</td>
+            <td><span class="risk-med">中高</span></td>
+            <td>用户可能要求“做成某电影/某动漫/某明星/某品牌广告风格”。这容易碰版权、商标和肖像权。</td>
+            <td>先做黑名单：明星、影视 IP、知名品牌、平台 logo。条款里要求用户保证素材有权使用。</td>
+          </tr>
+          <tr>
+            <td>个人信息保护</td>
+            <td><span class="risk-high">高</span></td>
+            <td>手机号、微信账号、上传照片、生成历史、支付记录都可能是个人信息。</td>
+            <td>隐私政策、最小化收集、删除入口、保存期限、后台权限控制都要有。</td>
+          </tr>
+          <tr>
+            <td>数据跨境</td>
+            <td><span class="risk-med">中高</span></td>
+            <td>如果把中国用户的人脸、声音、图片或日志发到境外 API，会增加合规复杂度。</td>
+            <td>面向大陆用户时，优先选中国大陆可用的模型和云服务。跨境调用先做法律确认。</td>
+          </tr>
+          <tr>
+            <td>微信小程序审核</td>
+            <td><span class="risk-med">中</span></td>
+            <td>即使法律上可以做，平台也可能因为 AI 滥用、资质、内容安全或支付问题拒审。</td>
+            <td>准备用户协议、隐私政策、AI 标识截图、内容审核流程、客服入口和 ICP/备案材料。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>V1 最低配置</h3>
+      <ul>
+        <li>所有导出视频带 AI 标识或水印。</li>
+        <li>用户上传人脸、声音、品牌素材时，需要勾选授权确认。</li>
+        <li>提示词先审核，生成结果公开分享前再审核。</li>
+        <li>限制高风险词：名人、公众人物、政治人物、色情、诈骗、新闻造假、知名 IP。</li>
+        <li>每个生成任务记录用户、提示词、供应商、时间、输出链接，便于投诉和下架。</li>
+        <li>先做封闭 beta，不要一上来开放公开广场或不受控分享。</li>
+      </ul>
+
+      <div class="note warning">
+        <p><strong>我的建议：</strong>早期产品可以简单，但不要“裸奔”。最少要有 AI 标识、授权确认、内容审核、举报下架和日志记录。这些东西不只是合规，也是保护公司和合作伙伴。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>参考资料</h2>
+      <ul>
+        <li><a href="https://api-docs.deepseek.com/quick_start/pricing/">DeepSeek 官方模型与价格</a></li>
+        <li><a href="https://api-docs.deepseek.com/updates/">DeepSeek API 更新日志</a></li>
+        <li><a href="https://klingapi.com/pricing">Kling API 价格页，用于估算可灵 API 秒级成本</a></li>
+        <li><a href="https://cntechpost.com/2026/03/04/bytedance-announces-api-pricing-seedance-2-0/">CnTechPost 关于 Seedance 2.0 API 价格的报道</a></li>
+        <li><a href="https://developer.volcengine.com/articles/7628567056649125942">火山引擎：Seedance 2.0 API 全面上线</a></li>
+        <li><a href="https://cloud.tencent.com/document/product/436/53863">腾讯云 COS 流量费用说明</a></li>
+        <li><a href="https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm">网信办关于 AI 生成合成内容标识的通知</a></li>
+        <li><a href="https://www.loc.gov/item/global-legal-monitor/2023-04-25/china-provisions-on-deep-synthesis-technology-enter-into-effect/">中国深度合成规定摘要，Library of Congress</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>这份 memo 只用于早期业务讨论，不构成法律或采购建议。正式上线前，请以供应商合同、云服务实际报价和中国本地法律顾问意见为准。</p>
+  </footer>
+</body>
+</html>
