@@ -1,0 +1,453 @@
+---
+layout: null
+sitemap: false
+---
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>当前视频生成流程概览与专家问题清单</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #171717;
+      --muted: #666;
+      --line: #dedede;
+      --soft: #f6f6f3;
+      --panel: #ffffff;
+      --accent: #a8ff2f;
+      --accent-ink: #284000;
+      --dark: #101010;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: #fbfbf8;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 38px 28px 72px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 920px;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .intro {
+      max-width: 920px;
+      margin-top: 14px;
+      color: #3d3d3d;
+      font-size: 17px;
+    }
+
+    .section {
+      margin-top: 44px;
+    }
+
+    .section-title {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 0;
+    }
+
+    .section-title span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      min-height: 118px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 25px;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .flow {
+      display: grid;
+      gap: 14px;
+    }
+
+    .stage {
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr) minmax(240px, 0.48fr);
+      gap: 18px;
+      align-items: start;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .num {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      background: var(--accent);
+      color: var(--accent-ink);
+      border-radius: 50%;
+      font-weight: 800;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+
+    .stage p,
+    .question p,
+    .note p {
+      margin: 0;
+    }
+
+    .stage .artifact {
+      color: var(--muted);
+      font-size: 14px;
+      background: var(--soft);
+      border: 1px solid #ecece7;
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .artifact strong {
+      display: block;
+      color: var(--ink);
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .media-row {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.42fr) minmax(0, 0.58fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    video,
+    .preview {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #000;
+    }
+
+    .note {
+      background: #fffbe8;
+      border: 1px solid #eadf9a;
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .questions {
+      display: grid;
+      gap: 12px;
+      counter-reset: q;
+    }
+
+    .question {
+      counter-increment: q;
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 14px;
+      padding: 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .question::before {
+      content: counter(q);
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--dark);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .question strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 18px;
+    }
+
+    .footer {
+      margin-top: 38px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.94em;
+      background: #efefea;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 860px) {
+      .media-row,
+      .stage {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .page {
+        padding: 24px 16px 48px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="section">
+      <div class="section-title">
+        <h2>当前结果</h2>
+        <span>本轮真实生成产物</span>
+      </div>
+      <div class="summary-grid">
+        <div class="metric">
+          <strong>10 秒</strong>
+          <span>把两个 5 秒片段拼接成完整竖屏视频。</span>
+        </div>
+        <div class="metric">
+          <strong>9:16</strong>
+          <span>720 × 1280，24 帧每秒，适配短视频广告。</span>
+        </div>
+        <div class="metric">
+          <strong>2 镜头</strong>
+          <span>第一镜走近并举起太阳镜，第二镜戴上后调整与凝视。</span>
+        </div>
+        <div class="metric">
+          <strong>资产演员</strong>
+          <span>使用平台里的虚拟演员资产，避免每次从普通人物图重新猜身份。</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>视频预览</h2>
+        <span>专家可以先看结果，再看流程</span>
+      </div>
+      <div class="media-row">
+        <video controls muted playsinline src="final_video.mp4"></video>
+        <div class="note">
+          <p>
+            这版比单句生成稳定，但还没有达到成熟广告工具那种“很会拍”的感觉。我们怀疑差距不只是文字描述，而是在生成前的视觉控制层：比如更好的舞台图、更明确的首帧和关键帧、更具体的动作设计、更稳定的镜头设计，以及生成后逐帧检查再调整。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>当前流程</h2>
+        <span>从输入资产到最终 10 秒视频</span>
+      </div>
+      <div class="flow">
+        <article class="stage">
+          <div class="num">1</div>
+          <div>
+            <h3>输入资产准备</h3>
+            <p>
+              第一步不是写生成指令，而是整理素材。当前案例有三类素材：太阳镜产品图、没有人物的场景氛围图、虚拟演员资产。产品图负责告诉模型“眼镜长什么样”；场景图负责告诉模型“广告发生在哪里、光线和色调是什么”；虚拟演员资产负责告诉模型“只能用同一个人，不要临时生成另一个长相”。
+            </p>
+          </div>
+          <div class="artifact">
+            <strong>我们希望锁住什么</strong>
+            产品形状、颜色、材质；停车场的黑白氛围；同一个虚拟女演员。
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="num">2</div>
+          <div>
+            <h3>广告方案编译</h3>
+            <p>
+              第二步是把一个模糊想法变成具体拍法。比如“做一个 10 秒太阳镜广告”太宽泛，所以系统会先拆成两个镜头：第一镜让演员走近并举起眼镜，第二镜让演员已经戴上眼镜、调整镜腿并看向镜头。这样做的目的是减少模型一次性要解决的问题，让每个片段更短、更明确、更容易控制。
+            </p>
+          </div>
+          <div class="artifact">
+            <strong>这一层产出什么</strong>
+            分镜安排、每个镜头的开始和结束状态、动作节奏、禁止事项、最终生成指令。
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="num">3</div>
+          <div>
+            <h3>导演层和质量检查</h3>
+            <p>
+              第三步是加入“导演判断”。它会明确这不是普通试戴视频，而是短视频广告：第一秒要有吸引力，镜头不能像监控画面，演员不能面无表情，产品不能变形，画面里不能出现字幕、商标、第二副眼镜或其他多余物体。我们现在用一套质量检查来防止生成指令退化成慢吞吞的测试片。
+            </p>
+          </div>
+          <div class="artifact">
+            <strong>现在会检查什么</strong>
+            首秒吸引力、镜头动作、表情变化、产品清晰度、人物一致性、是否有多余文字。
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="num">4</div>
+          <div>
+            <h3>分镜提交</h3>
+            <p>
+              第四步是把两个镜头分别交给视频模型生成。每个镜头都有自己的时间安排，比如第 0 到 0.5 秒做什么、第 1 到 2 秒做什么、第 4 到 5 秒停在哪里。这样比一次生成完整 10 秒更容易控制动作密度，也更容易让演员的姿态、表情和产品位置符合预期。
+            </p>
+          </div>
+          <div class="artifact">
+            <strong>为什么拆开生成</strong>
+            视频越长，模型越容易漂移。短镜头更容易让动作、表情、产品和构图保持清楚。
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="num">5</div>
+          <div>
+            <h3>轮询、下载与拼接</h3>
+            <p>
+              第五步是等待两个生成任务完成，下载两个视频片段，再拼成一个 10 秒视频。现在的拼接还比较基础，只是把两段接起来。后面我们想把转场设计得更自然，比如用手遮挡镜头、眼镜靠近镜头、动作匹配、快速闪白或其他能隐藏断点的方法。
+            </p>
+          </div>
+          <div class="artifact">
+            <strong>目前的不足</strong>
+            两个片段之间还不一定像同一支广告连续拍出来的，需要更好的首尾衔接策略。
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="num">6</div>
+          <div>
+            <h3>帧级检查</h3>
+            <p>
+              第六步是看真实生成结果，而不是只相信生成指令。我们会抽取每一秒的画面，检查演员是否有表情、镜头是否有动感、产品是否清楚、第一秒是否抓人、有没有出现多余物体。现在这一步主要靠人工看图，后面应该做成自动检查和自动改稿。
+            </p>
+          </div>
+          <div class="artifact">
+            <strong>下一步目标</strong>
+            让系统能自己判断“像不像广告”，而不是只判断“有没有生成成功”。
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>当前关键疑问</h2>
+        <span>我们想请专家重点回答这些</span>
+      </div>
+      <div class="questions">
+        <article class="question">
+          <div>
+            <strong>10 秒广告应该怎么拆？</strong>
+            <p>如果目标是一个质量较高的 10 秒广告，你会建议一次生成完整 10 秒，还是拆成两个或三个更短镜头，或者按“关键帧到关键帧”的方式一段一段生成？为什么？</p>
+          </div>
+        </article>
+
+        <article class="question">
+          <div>
+            <strong>视频模型最可控的输入组合是什么？</strong>
+            <p>在当前视频模型里，最可控的输入组合是什么：首帧、尾帧、参考图、演员资产、产品图、姿势图、视频参考？这些输入之间的优先级和作用边界是什么？</p>
+          </div>
+        </article>
+
+        <article class="question">
+          <div>
+            <strong>演员资产的动作和表情怎么控？</strong>
+            <p>使用虚拟演员资产时，控制面部表情和身体动作最可靠的方法是什么？比如半笑、眼神、走路、抬手、调整眼镜，哪些能靠文字生成指令，哪些必须靠关键帧或更短的镜头？</p>
+          </div>
+        </article>
+
+        <article class="question">
+          <div>
+            <strong>第二镜应该从第一镜尾帧生成吗？</strong>
+            <p>为了让两个镜头衔接得更自然，你会建议用第一镜的最后一帧作为第二镜输入，还是分别生成两个已经构图好的关键帧？什么情况下应该选择哪一种？</p>
+          </div>
+        </article>
+
+        <article class="question">
+          <div>
+            <strong>哪些镜头语言在当前视频模型里真的有效？</strong>
+            <p>镜头控制方面，哪些说法更可靠：焦段、低机位、后退跟拍、手持感、环绕、推近、拉焦、快速甩镜？哪些词会让模型误解，导致画面慢、飘、虚或乱？</p>
+          </div>
+        </article>
+
+        <article class="question">
+          <div>
+            <strong>怎样让视频更像广告，而不是普通测试片？</strong>
+            <p>你会从哪些层面提高画面的利落感和鲜活感：舞台图、灯光、颜色对比、前景运动、动作机制、镜头速度、剪辑节奏、演员表情，还是后期处理？哪些最值得我们先系统化？</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      本页用于专家沟通，不是最终产品文案。
+    </footer>
+  </main>
+</body>
+</html>
